@@ -1,27 +1,54 @@
-# newstyledance
+# Description
+This is a website for a dance school activity in Milan [(Google Maps)](https://maps.app.goo.gl/2aCSy8LbFXoEUWebA)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.6.
+# Live Test
+If you want to try live code, visit the [website](https://www.newstyledance.it/pre-menu).
 
-## Development server
+# Usage and Modify
+**0. Prerequisites:**
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Install [Node.js version 18.18.0+](https://nodejs.org/en/download/current) or check if already installed with `node -v`.
+- Install [npm version 9.8.1+](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) or check if already installed with `npm -v`.
+- Install [Angular CLI version 16.2.0+](https://angular.io/cli) or check if already installed with `ng v`.
 
-## Code scaffolding
+**1. Install Project Dependencies:**
+   
+- Install all project dependencies specified in the *angular.json* file using `npm install`, a *node_module* folder will be created.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+**2. Launch the Application:**
 
-## Build
+- Host the website on the server or launch your application using `ng serve`.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+**3. See result**
 
-## Running unit tests
+- Navigate to `http://localhost:4200/` in your browser to see the result:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+**4. Build Angular**
 
-## Running end-to-end tests
+- To transform the Angular project into a static website use the command `ng build`
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+**5. Host on AWS S3 Bucket**
 
-## Further help
+- On your AWS account create a new S3 Bucket, uncheck `BLOCK PUBLIC ACCESS` so that the public can access it
+- Navigate to permission and add the following permission:
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+   {
+            "Sid": "PublicReadGetObject",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::BUCKET_NAME/*"
+        }
+    ]
+}
+```
+- Navigate to properties and enable `Static website hosting`
+  
+**6. Custom domain**
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- [Follow the guide](https://dev.to/aws-builders/how-to-deploy-a-static-website-on-amazon-s3-with-route-53-3o6p)
+
+Happy coding!
