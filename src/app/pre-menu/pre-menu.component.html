@@ -1,0 +1,77 @@
+<div class="loading-image">
+    <img src="../../resources/images/Logo-definitivo.gif" />
+</div>
+
+<audio id="background-audio">
+    <source src="../../resources/file/flashback sound.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<div class="col-12 tabs-custom tabs-corporate">
+    <div class="container-centered">
+        <p class="logo-title">
+            <span style="--char-index: 0;">N</span><span style="--char-index: 1;">.</span><span
+                style="--char-index: 2;"> </span>
+            <span style="--char-index: 3;">S</span><span style="--char-index: 4;">.</span><span
+                style="--char-index: 5;"> </span>
+            <span style="--char-index: 6;">D</span><span style="--char-index: 7;">.</span>
+        </p>
+        <p class="logo-sub-title">
+            <span style="--char-index: 0;">S</span><span style="--char-index: 1;">c</span><span
+                style="--char-index: 2;">h</span>
+            <span style="--char-index: 3;">o</span><span style="--char-index: 4;">o</span><span
+                style="--char-index: 5;">l</span>
+            <span style="--char-index: 6;"> </span>
+            <span style="--char-index: 7;">A</span><span style="--char-index: 8;">c</span><span
+                style="--char-index: 9;">a</span>
+            <span style="--char-index: 10;">d</span><span style="--char-index: 11;">e</span><span
+                style="--char-index: 12;">m</span>
+            <span style="--char-index: 13;">y</span>
+        </p>
+
+        <div class="div-comparsa">
+            <p class="pre-menu-description">
+                Entra nel meraviglioso mondo di<br>
+                New Style Dance e ralizza i tuoi <br>
+                <b>sogni professionali</b>
+            </p>
+            <br>
+
+            <ul class="list" [ngStyle]="{'opacity': opacityButtonTop}" class="pre-menu-button">
+                <li class="nav-item button-box" role="presentation" (click)="showOptions()"><a
+                        class="nav-link presentation-button">&nbsp;Scopri</a>
+                </li>
+            </ul>
+        </div>
+
+        <ul class="list" [ngStyle]="{'opacity': opacityButtons}">
+            <li class="nav-item button-box"
+                style="background-image: url(./resources/images/menu-background-option/scuola-danza.png);"
+                role="presentation"><a [routerLink]="['/scuola-danza-chi-siamo']"
+                    class="nav-link presentation-button">&nbsp;Scuola Danza</a></li>
+            <li class="nav-item button-box"
+                style="background-image: url(./resources/images/menu-background-option/accademia-danza.png);"
+                role="presentation"><a [routerLink]="['/accademia-danza-chi-siamo']"
+                    class="nav-link presentation-button">&nbsp;Accademia Danza</a></li>
+            <li class="nav-item button-box"
+                style="background-image: url(./resources/images/menu-background-option/centro-formazione.png);"
+                role="presentation"><a [routerLink]="['/centro-formazione-chi-siamo']"
+                    class="nav-link presentation-button">&nbsp;Centro di Formazione</a></li>
+            <li class="nav-item button-box"
+                style="background-image: url(./resources/images/menu-background-option/accademia-canto.png);"
+                role="presentation"><a href="https://focusonyouartistacademy.grweb.site/"
+                    routerLinkActive="router-link-active" class="nav-link presentation-button">&nbsp;Accademia Canto</a>
+            </li>
+            <li class="nav-item button-box"
+                style="background-image: url(./resources/images/menu-background-option/produzione-eventi.png);"
+                role="presentation"><a [routerLink]="['/eventi-danza-chi-siamo']"
+                    class="nav-link presentation-button">&nbsp;Produzione Eventi</a></li>
+        </ul>
+    </div>
+    <br>
+    <br>
+    <br>
+
+    <app-contact-bar></app-contact-bar>
+
+</div>

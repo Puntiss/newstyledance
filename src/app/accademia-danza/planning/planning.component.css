@@ -1,0 +1,12 @@
+/*table layout*/
+.planning-element {
+    color: white;
+    background: none;
+    border: none;
+}
+.table td,
+.table th {
+    font-size: 11px;
+    padding: 0.25rem;
+    min-width: 50px;
+}

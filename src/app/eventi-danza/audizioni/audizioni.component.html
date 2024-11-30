@@ -1,0 +1,165 @@
+<app-contact-bar></app-contact-bar>
+<app-eventi-danza-navbar>Audizioni</app-eventi-danza-navbar>
+<div class="container-centered">
+    <form #formContact="ngForm">
+        <!-- #1 row start -->
+        <div class="row">
+            <div class="col-6 checkbox-title">
+                <label>Dati personali:</label>
+            </div>
+            <div class="col-6 checkbox-title">
+                <label></label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6 error-msg">
+                <label></label>
+            </div>
+            <div class="col-6 error-msg">
+                <label></label>
+            </div>
+        </div>
+
+        <!-- #2 row start -->
+        <div class="row">
+            <div class="col-6">
+                <input name="name" ngModel required="true" #name="ngModel" placeholder="Nome" />
+            </div>
+            <div class="col-6">
+                <input name="surname" ngModel required="true" #surname="ngModel" placeholder="Cognome" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6 error-msg">
+                <label *ngIf="!name.valid && name.touched else space">Campo obbligatorio</label>
+            </div>
+            <div class="col-6 error-msg">
+                <label *ngIf="!surname.valid && surname.touched else space">Campo obbligatorio</label>
+            </div>
+        </div>
+        <!-- #3 row start -->
+        <div class="row">
+            <div class="col-6">
+                <input name="birthdate" ngModel required="true" #birthdate="ngModel" placeholder="Data di nascita" />
+            </div>
+            <div class="col-6">
+                <input name="city" ngModel required="true" #city="ngModel" placeholder="Città di residenza" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6 error-msg">
+                <div *ngIf="!isValidBirthdate('birthdate') && birthdate.touched else space">
+                    <label *ngIf="birthdate.errors?.['required']" class="text-danger">Campo obbligatorio</label>
+                    <label *ngIf="birthdate.errors?.['invalidAge']" class="text-danger">Richiesta maggiore età</label>
+                    <label *ngIf="birthdate.errors?.['invalidDateFormat']" class="text-danger">Formato
+                        gg/mm/aaaa</label>
+                    <label *ngIf="birthdate.errors?.['invalidCalendar']" class="text-danger">Data non esistente</label>
+                </div>
+            </div>
+            <div class="col-6 error-msg">
+                <label *ngIf="!city.valid && city.touched else space">Campo obbligatorio</label>
+            </div>
+        </div>
+
+        <!-- #4 row start -->
+        <div class="row">
+            <div class="col-6">
+                <input name="telephone" ngModel required="true" #telephone="ngModel" placeholder="Numero di telefono" />
+            </div>
+            <div class="col-6">
+                <input name="email" ngModel required="true" #email="ngModel" placeholder="Email" email />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6 error-msg">
+                <div *ngIf="!mailChecker.isValidTelephone('telephone',formContact) && telephone.touched else space">
+                    <label *ngIf="telephone.errors?.['required']" class="text-danger">Campo obbligatorio</label>
+                    <label *ngIf="telephone.errors?.['invalidPhoneNumber']" class="text-danger">Numero non
+                        valido</label>
+                </div>
+            </div>
+            <div class="col-6 error-msg">
+                <div *ngIf="!email.valid && email.touched else space">
+                    <label *ngIf="email.errors?.['required']" class="text-danger">Campo obbligatorio</label>
+                    <label *ngIf="email.errors?.['email']" class="text-danger">Email non valida</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- #5 row start -->
+        <div class="row">
+            <div class="col-6 checkbox-title">
+                <label>Tipo Ruolo:</label>
+            </div>
+            <div class="col-6 checkbox-title">
+                <label></label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6 error-msg">
+                <label></label>
+            </div>
+            <div class="col-6 error-msg">
+                <label></label>
+            </div>
+        </div>
+
+        <!-- #6 row start -->
+        <div class="row">
+            <div class="col-12 checkbox-container">
+                <input name="role" id="role1" required="true" ngModel type="checkbox" value="Ballerino"
+                    (change)="mailChecker.onCheckboxChange($event, roles)">
+                <label for="role1">Ballerino</label>
+
+                <input name="role" id="role2" required="true" ngModel type="checkbox" value="Cantante"
+                    style="margin-left: 10px;" (change)="mailChecker.onCheckboxChange($event, roles)">
+                <label for="role2">Cantante</label>
+
+                <input name="role" id="role3" required="true" ngModel type="checkbox" value="Attore"
+                    style="margin-left: 10px;" (change)="mailChecker.onCheckboxChange($event, roles)">
+                <label for="role3">Attore</label>
+
+                <input name="role" id="role4" required="true" ngModel type="checkbox" value="Altro"
+                    style="margin-left: 10px;" (change)="mailChecker.onCheckboxChange($event, roles)">
+                <label for="role4">Altro</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6 error-msg">
+                <label></label>
+            </div>
+            <div class="col-6 error-msg">
+                <label></label>
+            </div>
+        </div>
+
+        <!-- Bottoni conferma-->
+        <div class="row">
+            <div class="col-6">
+                <button (click)="onFormSubmitted()" class="confirm-button"
+                    [disabled]="!formContact.valid">Conferma</button>
+            </div>
+            <div class="col-6">
+                <button (click)="formContact.reset()" class="reset-button">Reset</button>
+            </div>
+        </div>
+        
+        <div class="msg-success" *ngIf="jsonResponse && jsonResponse.status == 'success' ">
+            Email inviata con successo! ti reindirizzeremo alla home eventi in danza in {{remainingTime}} ...
+        </div>
+        <div class="msg-error" *ngIf="jsonResponse && jsonResponse.status == 'error' ">
+            Si è verificato un errore con l'invio della mail, ti invitiamo a scrivere a info&#64;newstyledance.it con i dati sopra richiesti
+        </div>
+
+    </form>
+</div>
+
+<ng-template #space>
+    <label></label>
+</ng-template>

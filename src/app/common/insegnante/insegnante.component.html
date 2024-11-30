@@ -1,0 +1,13 @@
+<div (click)="switchView()">
+    <div class="cv">
+        <label class="cv-text">{{data.nome}}</label>
+        <label class="cv-sub-text">{{data.category}}</label>
+    </div>
+    <textarea class="cv-texarea" style="display: none; user-select: none;" readonly="true">{{data.description}}</textarea>
+    <img [src]="'./resources/images/insegnanti/'+data.path"
+        style="background: none; border: 2px solid white; display: block;" />
+        <div class="cv" style="text-align: center;">
+            <label class="cv-button">{{buttonText}}</label>
+        </div>
+    
+</div>

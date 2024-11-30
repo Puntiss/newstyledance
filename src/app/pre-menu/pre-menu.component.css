@@ -1,0 +1,92 @@
+.presentation-button {
+    color: white !important;
+}
+
+.button-box {
+    background-position: center;
+    border: .5px solid white !important;
+    margin: 15px 0px !important;
+    transition: opacity 1s;
+}
+
+ul{
+    transition: opacity 1s;
+    animation-duration: 1s;
+}
+
+.logo-title {
+    color: var(--nsd-yellow);
+    font-size: 75px;
+    height: 70px;
+}
+
+.logo-sub-title {
+    color: var(--nsd-yellow);
+    font-size: 29px;
+}
+
+/************/
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.logo-title span,
+.logo-sub-title span,
+.logo-text span {
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+    animation-delay: calc(var(--char-index) * 0.1s);
+}
+
+.logo-title {
+    --char-index: 3;
+}
+
+.logo-sub-title {
+    --char-index: 3;
+}
+
+.logo-text {
+    --char-index: 3;
+}
+
+/************/
+
+@keyframes fadeInOpacity {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.div-comparsa{
+    color:white;
+    opacity: 0; 
+    animation: fadeInOpacity 2s ease-in-out forwards;
+    animation-delay: 2s; 
+}
+
+/************/
+
+@keyframes fadeOutOpacity {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.loading-image{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    max-width: 250px;
+    transform: translate(-50%, -50%);
+    animation: fadeOutOpacity 1s ease-in-out forwards;
+    animation-delay: 1s; 
+}

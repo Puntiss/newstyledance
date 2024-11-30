@@ -1,0 +1,48 @@
+<app-contact-bar></app-contact-bar>
+<app-accademia-danza-navbar>Orari</app-accademia-danza-navbar>
+
+<div class="container-centered">
+    <div class="row">
+        <div class="col-12">
+            <label class="headings-title">{{location}}</label>
+        </div>
+        <div class="col-12">
+            <ng-container *ngFor="let hourTable of filterByLocation(); index as i">
+                <p style="text-align: start;">
+                    <button class="planning-element" type="button"
+                        data-toggle="collapse" [attr.data-target]="'#multiCollapseExample'+ i" aria-expanded="false"
+                        [attr.aria-controls]="'multiCollapseExample'+ i"><fa-icon [icon]="faSortDown"></fa-icon>
+                        &nbsp;{{hourTable.dayName}}</button>
+                </p>
+                <div class="row" style="margin-top: 0px;">
+                    <div class="col">
+                        <div class="collapse multi-collapse" [id]="'multiCollapseExample'+ i">
+                            <div class="card card-body planning-element" style="padding: 0px;">
+                                <table class="table planning-element">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#{{i}}</th>
+                                            <ng-container *ngFor="let room of hourTable.programs[0].rooms">
+                                                <th scope="col">{{room.roomName}}</th>
+                                            </ng-container>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <ng-container *ngFor="let elem of hourTable.programs">
+                                            <tr>
+                                                <th scope="row">{{elem.hour}}</th>
+                                                <ng-container *ngFor="let room of elem.rooms">
+                                                    <td>{{room.courseName}}</td>
+                                                </ng-container>
+                                            </tr>
+                                        </ng-container>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>

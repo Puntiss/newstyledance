@@ -1,0 +1,15 @@
+<app-contact-bar></app-contact-bar>
+<app-accademia-danza-navbar>Insegnanti</app-accademia-danza-navbar>
+
+<div class="container-centered">
+    <div class="row">
+        <ng-container *ngFor="let teacher of dataTable;index as i">
+            <div class="col-12" style="margin-top: 10px;" >
+                <insegnante [data]="teacher" [index]="i"></insegnante>
+            </div>
+        </ng-container>
+    </div>
+</div>
+
+<br>
+<br>

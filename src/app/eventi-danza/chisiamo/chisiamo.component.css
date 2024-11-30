@@ -1,0 +1,5 @@
+.description-container a{
+    color: var(--nsd-blue) !important;
+    display: contents;
+    padding: 0px;
+}

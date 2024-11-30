@@ -1,0 +1,81 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+
+    <a class="navbar-brand" style="padding: 0px;">
+        <label class="logo-title">Accademia Danza</label>
+        <label class="logo-sub-title"><ng-content></ng-content></label>
+    </a>
+
+    <button class="navbar-toggler" style="border:none" type="button">
+        <fa-icon [icon]="menuIcon" style="color: white;" (click)="slideBar()"></fa-icon>
+    </button>
+
+    <div class="collapse navbar-collapse lateral-left" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/pre-menu']" data-toggle="collapse"
+                    data-target="#navbarSupportedContent"style="text-decoration: underline;">
+                    Pagina Iniziale
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/accademia-danza-chi-siamo']" data-toggle="collapse"
+                    data-target="#navbarSupportedContent">
+                    Chi siamo
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/accademia-danza-dove-siamo']" data-toggle="collapse"
+                    data-target="#navbarSupportedContent">
+                    Dove siamo
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/accademia-danza-audizioni']" data-toggle="collapse"
+                    data-target="#navbarSupportedContent">
+                    Audizioni
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" target="_blank" href="https://cinemateatrogiglio.it/">
+                    Teatro
+                </a>
+            </li>  
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/accademia-danza-docenti']" data-toggle="collapse"
+                    data-target="#navbarSupportedContent">
+                    Docenti
+                </a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Orari
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <ng-container *ngFor="let location of locations">
+                        <a [routerLink]="['/accademia-danza-orari']" [queryParams]="{ 'location' : location}"
+                            class="dropdown-item">{{location}}</a>
+                    </ng-container>
+                </div>
+            </li>       
+        </ul>
+    </div>
+</nav>
+
+<div id="mySidenav" class="sidenav">
+    <a [routerLink]="['/pre-menu']" style="text-decoration: underline;">Pagina Iniziale</a>
+    <a [routerLink]="['/accademia-danza-chi-siamo']">Chi siamo</a>
+    <a [routerLink]="['/accademia-danza-dove-siamo']">Dove siamo</a>
+    <a [routerLink]="['/accademia-danza-audizioni']">Audizioni</a>
+    <a href="https://cinemateatrogiglio.it/">Teatro</a>
+    <a [routerLink]="['/accademia-danza-docenti']">Docenti</a>
+    <a class="nav-title">Orari</a>
+    <ng-container *ngFor="let location of locations">
+        <a [routerLink]="['/accademia-danza-orari']" [queryParams]="{ 'location' : location}"
+            class="child" (click)="slideBar()">{{location}}</a>
+    </ng-container>
+    <a class="nav-title">Affiliazioni</a>
+    <a href="https://www.libertasnazionale.it/" class="child">Libertas</a>
+    <a href="https://www.idadance.com/" class="child">I.D.A. ASI</a>
+    <a href="https://networksportitalia.it/" class="child">Network Italia</a>
+</div>
