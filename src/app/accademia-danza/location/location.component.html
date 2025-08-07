@@ -1,16 +1,17 @@
 <app-contact-bar></app-contact-bar>
 <app-accademia-danza-navbar>Dove siamo</app-accademia-danza-navbar>
 <div class="container-centered">
-    <div class="row">
-        <div class="col-12 col-lg-6">
-            <label class="headings-title">Vignate</label><br>
-            <label class="headings-sub-title">Via Enrico Fermi, 92, 20052 Vignate MI</label>
-            <br>
-            <br>
+    <ng-container *ngFor="let location of locations">
+        <div class="row">
+            <div class="col-12 col-lg-6">
+                <label class="headings-title">{{location.nome}}</label><br>
+                <label class="headings-sub-title">{{location.indirizzo}}</label>
+                <br>
+                <br>
+            </div>
+            <div class="col-12 col-lg-6" (click)="redirectTo(location.linkMaps)">
+                <img [src]="'../../../resources/images/sede/'+location.nome+'.png'" />
+            </div>
         </div>
-        <div class="col-12 col-lg-6">
-            <img src="../../../resources/images/Sede Vignate.png" (click)="redirectTo('https://maps.app.goo.gl/11NYnJsn4oFz3JrT7')"/>
-
-        </div>
-    </div>
+    </ng-container>
 </div>

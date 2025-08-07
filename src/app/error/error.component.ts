@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { RedirectorService } from '../resources/plugin/redirecorService';
+import { RedirectorService } from '../../resources/plugin/redirecorService';
 
 
 @Component({

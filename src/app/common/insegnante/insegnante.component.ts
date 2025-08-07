@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, ViewEncapsulation } from '@angular/core';
-import { TeacherRowType } from '../../resources/plugin/loadExcelTeacher';
+import { TeacherRowType } from '../../../resources/plugin/loadExcelTeacher';
 
 @Component({
   selector: 'insegnante',

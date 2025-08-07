@@ -3,7 +3,7 @@ import { ContactBarComponent } from '../../contact-bar/contact-bar.component';
 import { CommonModule } from '@angular/common';
 import { ScuolaDanzaNavbarComponent } from '../navbar/navbar.component';
 import { ActivatedRoute, } from '@angular/router';
-import { LoadExcelHours, WeeklyLocationRowType } from '../../resources/plugin/loadExcelHours';
+import { LoadExcelHours, LocationType, WeeklyLocationRowType } from '../../../resources/plugin/loadExcelHours';
 import { faSortDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
@@ -39,11 +39,10 @@ export class ScuolaDanzaPlanningComponent implements DoCheck {
 
   ngOnInit(): void {
     this.loadExcelHours.getLocations("scuola-danza").then(locations =>
-      locations.forEach((location) => {
-        console.log(location);
-        this.loadExcelHours.loadfromHours("scuola-danza", location).then(
+      locations.forEach((location: LocationType) => {
+        this.loadExcelHours.loadfromHours("scuola-danza", location.nome).then(
           (weeklyPrograms) => {
-            this.dataTable.push({ locationName: location, weeklyPrograms: weeklyPrograms })
+            this.dataTable.push({ locationName: location.nome, weeklyPrograms: weeklyPrograms })
             console.log(this.dataTable);
           }
         )

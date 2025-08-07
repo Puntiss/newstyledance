@@ -4,8 +4,8 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { EventiDanzaNavbarComponent } from '../navbar/navbar.component';
 import { ContactBarComponent } from '../../contact-bar/contact-bar.component';
 import { HttpClient, HttpClientModule, HttpParams } from '@angular/common/http';
-import { RedirectorService } from '../../resources/plugin/redirecorService';
-import { MailChecker } from '../../resources/plugin/mailChecker';
+import { RedirectorService } from '../../../resources/plugin/redirecorService';
+import { MailChecker } from '../../../resources/plugin/mailChecker';
 
 export interface MailResponse {
   status: string;

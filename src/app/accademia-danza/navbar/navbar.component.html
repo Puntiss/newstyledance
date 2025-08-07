@@ -53,8 +53,8 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <ng-container *ngFor="let location of locations">
-                        <a [routerLink]="['/accademia-danza-orari']" [queryParams]="{ 'location' : location}"
-                            class="dropdown-item">{{location}}</a>
+                        <a [routerLink]="['/accademia-danza-orari']" [queryParams]="{ 'location' : location.nome}"
+                            class="dropdown-item">{{location.nome}}</a>
                     </ng-container>
                 </div>
             </li>       
@@ -71,8 +71,8 @@
     <a [routerLink]="['/accademia-danza-docenti']">Docenti</a>
     <a class="nav-title">Orari</a>
     <ng-container *ngFor="let location of locations">
-        <a [routerLink]="['/accademia-danza-orari']" [queryParams]="{ 'location' : location}"
-            class="child" (click)="slideBar()">{{location}}</a>
+        <a [routerLink]="['/accademia-danza-orari']" [queryParams]="{ 'location' : location.nome}"
+            class="child" (click)="slideBar()">{{location.nome}}</a>
     </ng-container>
     <a class="nav-title">Affiliazioni</a>
     <a href="https://www.libertasnazionale.it/" class="child">Libertas</a>

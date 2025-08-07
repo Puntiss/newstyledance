@@ -16,7 +16,7 @@ export const NUMERO_WHATSAPP_GIOVANNA: string = "393384421180";
     PreMenuComponent
   ],
   templateUrl: './app.component.html',
-  styleUrl: './resources/css/style.css',
+  styleUrl: '../resources/css/style.css',
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit {
