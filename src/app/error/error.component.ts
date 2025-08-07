@@ -1,7 +1,6 @@
-import { Component, OnInit, ViewEncapsulation, inject } from '@angular/core';
-import { routes } from '../app.routes';
-import { Router } from '@angular/router';
-import { RedirectorService } from '../../resources/plugin/redirecorService';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { RedirectorService } from '../resources/plugin/redirecorService';
+
 
 @Component({
   selector: 'app-error',
@@ -13,7 +12,7 @@ import { RedirectorService } from '../../resources/plugin/redirecorService';
 })
 export class ErrorComponent implements OnInit {
 
-  constructor(private redirectorService: RedirectorService) {}
+  constructor(private redirectorService: RedirectorService) { }
 
   remainingTime: number = 9;
 
@@ -23,6 +22,6 @@ export class ErrorComponent implements OnInit {
         this.remainingTime = time;
       }
     )
-   }
+  }
 
 }

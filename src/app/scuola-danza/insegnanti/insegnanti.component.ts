@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, ViewEncapsulation } from '@angular/core';
 import { ContactBarComponent } from '../../contact-bar/contact-bar.component';
-import { LoadExcelTeacher, TeacherRowType } from '../../../resources/plugin/loadExcelTeacher';
+import { LoadExcelTeacher, TeacherRowType } from '../../resources/plugin/loadExcelTeacher';
 import { ScuolaDanzaNavbarComponent } from '../navbar/navbar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';

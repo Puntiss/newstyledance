@@ -6,8 +6,11 @@
             <p>Loading...</p>
       </div>
 </div>
-<img *ngIf="showPromotion" src="../resources/images/promozioni/estate_24.png" class="img-promozionale"
-      (click)="showPromotion = false">
+
+<div *ngIf=" showPromotion" (click)="showPromotion = false">
+      <img src="../resources/images/promozioni/estate_24.png" class="img-promozionale">
+</div>
+
 <div class="page" style="background-color: black;">
       <router-outlet></router-outlet>
 </div>

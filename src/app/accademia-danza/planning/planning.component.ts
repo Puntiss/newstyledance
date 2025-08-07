@@ -3,7 +3,7 @@ import { ContactBarComponent } from '../../contact-bar/contact-bar.component';
 import { CommonModule } from '@angular/common';
 import { AccademiaDanzaNavbarComponent } from '../navbar/navbar.component'; 
 import { ActivatedRoute, } from '@angular/router';
-import { LoadExcelHours, WeeklyLocationRowType } from '../../../resources/plugin/loadExcelHours';
+import { LoadExcelHours, WeeklyLocationRowType } from '../../resources/plugin/loadExcelHours';
 import { locations } from '../../accademia-danza/navbar/navbar.component';
 import { faSortDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -39,7 +39,8 @@ export class AccademiaDanzaPlanningComponent implements DoCheck {
   }
 
   ngOnInit(): void {
-    locations.forEach((location) => {
+    this.loadExcelHours.getLocations("accademia-danza").then(locations =>
+      locations.forEach((location) => {
       console.log(location);
       this.loadExcelHours.loadfromHours("accademia-danza", location).then(
         (weeklyPrograms) => {
@@ -47,7 +48,7 @@ export class AccademiaDanzaPlanningComponent implements DoCheck {
           console.log(this.dataTable);
         }
       )
-    });
+    }));
   }
 
   filterByLocation(): WeeklyLocationRowType[] {

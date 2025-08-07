@@ -3,6 +3,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faBars, faX } from '@fortawesome/free-solid-svg-icons';
+import { LoadExcelHours } from '../../resources/plugin/loadExcelHours';
 
 export const locations: Array<string> = ["Vignate"];
 
@@ -21,7 +22,14 @@ export const locations: Array<string> = ["Vignate"];
 export class AccademiaDanzaNavbarComponent {
 
   menuIcon = faBars;
-  locations = locations;
+
+  locations: Array<String> = [];
+
+  constructor(private loadExcelHours: LoadExcelHours) { }
+
+  async ngOnInit() {
+    this.locations = await this.loadExcelHours.getLocations("accademia-danza")
+  }
 
   slideBar() {
 

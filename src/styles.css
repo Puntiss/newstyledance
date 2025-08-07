@@ -1,0 +1,144 @@
+
+  .button-whatsapp {
+    background-color: #00e073;
+    border: none !important;
+    color: #fff
+  }
+
+  .button-whatsapp:hover {
+    background-color: #128c7e;
+    color: #fff
+  }
+
+  .button-direction {
+    background-color: #4486f4;
+    border: none !important;
+    color: #fff
+  }
+
+  .button-direction:hover {
+    background-color: #275ebd;
+    color: #fff
+  }
+
+  .button-direction:focus,
+  .button-whatsapp:focus {
+    color: #fff
+  }
+
+  .img-promozionale {
+    width: 300px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    border: 2px solid
+  }
+
+  .logo-title {
+    color: var(--nsd-yellow);
+    font-size: 25px
+  }
+
+  .logo-sub-title {
+    color: var(--nsd-yellow);
+    font-size: 8px
+  }
+
+  .headings-title {
+    color: var(--nsd-blue);
+    font-size: 29px
+  }
+
+  .headings-sub-title {
+    color: #fff;
+    font-size: 12px
+  }
+
+  .container-centered {
+    text-align: center;
+    min-width: 320px;
+    max-width: 500px;
+    width: 50vw;
+    margin: 0 auto
+  }
+
+  .description-container {
+    color: #fff;
+    text-align: start
+  }
+
+  .sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 999;
+    top: 75px;
+    right: 0;
+    background-color: #000;
+    overflow-x: hidden;
+    transition: .5s;
+    padding-top: 0
+  }
+
+  .nav-title {
+    color: #545454 !important
+  }
+
+  a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #f1f1f1 !important;
+    display: block;
+    transition: .3s
+  }
+
+  a:hover,
+  .navbar-light .navbar-nav .active>.nav-link,
+  .navbar-light .navbar-nav .nav-link.active,
+  .navbar-light .navbar-nav .nav-link.show,
+  .navbar-light .navbar-nav .show>.nav-link {
+    color: #818181
+  }
+
+  .sidenav .closebtn {
+    position: absolute;
+    top: 28px;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px
+  }
+
+  @media screen and (max-height: 450px) {
+    .sidenav {
+      padding-top: 15px
+    }
+
+    .sidenav a {
+      font-size: 18px
+    }
+  }
+
+  @media (min-width: 992px) {
+    #navbarSupportedContent {
+      display: none
+    }
+  }
+
+  .child {
+    margin-left: 20px
+  }
+
+  .dropdown-item {
+    color: #000 !important
+  }
+
+  .msg-success {
+    color: #0f0 !important
+  }
+
+  .msg-error {
+    color: red !important
+  }

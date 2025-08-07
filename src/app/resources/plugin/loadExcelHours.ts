@@ -39,6 +39,14 @@ export class LoadExcelHours {
         });
         return result;
     }
+
+    async getLocations(schoolType: string): Promise<string[]> {
+        const url = "../../resources/file/" + schoolType + "/orari/locations.json";
+        const response = await fetch(url);
+        const files = await response.json();
+        return files.locations
+    }
+
 }
 
 export interface WeeklyLocationRowType {
