@@ -2,10 +2,10 @@
 <app-scuola-danza-navbar>Chi siamo</app-scuola-danza-navbar>
 <div class="container-centered">
     <owl-carousel-o [options]="customOptions">
-        <ng-template carouselSlide> <img
-                src="../resources/images/scuola-danza/photo_5922582420706673418_y.jpg"></ng-template>
-        <ng-template carouselSlide> <img
-                src="../resources/images/scuola-danza/photo_5922582420706673419_x.jpg"></ng-template>
+        <ng-container *ngFor="let galleryImgage of galleryPrincipaleImgages">
+            <ng-template carouselSlide> <img
+                    [src]="'../resources/images/scuola-danza/gallery-principale/'+galleryImgage"></ng-template>
+        </ng-container>
     </owl-carousel-o>
     <p style="color: white; text-align: start;">
         New Style Dance apre i battenti il primo ottobre del 2010 quasi come scommessa,
@@ -34,6 +34,12 @@
         Una location di circa 300 mq con 3 sale, ci permetterà di soddisfare a pieno i nostri allievi,
         completare la nostra immagine, e vedere realizzato così il nostro sogno!!!!
     </p>
+    <owl-carousel-o [options]="customOptions">
+        <ng-container *ngFor="let galleryImgage of gallerySedeImgages">
+            <ng-template carouselSlide> <img
+                    [src]="'../resources/images/scuola-danza/gallery-sede/'+galleryImgage"></ng-template>
+        </ng-container>
+    </owl-carousel-o>
 </div>
 <br>
 <br>

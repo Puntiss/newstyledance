@@ -3,6 +3,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { ContactBarComponent } from '../../contact-bar/contact-bar.component';
 import { ScuolaDanzaNavbarComponent } from '../navbar/navbar.component';
+import { LoadExcelGallery } from '../../../resources/plugin/loadExcelGallery';
 
 @Component({
   selector: 'app-scuola-danza-chi-siamo',
@@ -24,7 +25,7 @@ export class ScuolaDanzaChiSiamoComponent {
     mouseDrag: true,
     touchDrag: true,
     pullDrag: true,
-    dots: true,
+    dots: false,
     navSpeed: 700,
     navText: ['', ''],
     responsive: {
@@ -38,7 +39,18 @@ export class ScuolaDanzaChiSiamoComponent {
         items: 3
       }
     },
-    nav: false,
+    nav: true,
     autoplay: true
   }
+
+  gallerySedeImgages: Array<string> = [];
+  galleryPrincipaleImgages: Array<string> = [];
+
+  constructor(private loadExcelGallery: LoadExcelGallery) { }
+
+  async ngOnInit() {
+    this.gallerySedeImgages = await this.loadExcelGallery.loadfromSchool("scuola-danza", "gallery-sede");
+    this.galleryPrincipaleImgages = await this.loadExcelGallery.loadfromSchool("scuola-danza", "gallery-principale");
+  }
+
 }
