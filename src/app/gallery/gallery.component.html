@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+
+    <a class="navbar-brand" style="padding: 0px;">
+        <label class="logo-title">Gallery</label>
+        <label class="logo-sub-title"><ng-content></ng-content></label>
+    </a>
+
+    <div class=" lateral-left" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/pre-menu']" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" style="text-decoration: underline;">
+                    Pagina Iniziale
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container-centered">
+    <owl-carousel-o [options]="customOptions">
+        <ng-container *ngFor="let galleryImgage of galleryImgages">
+            <ng-template carouselSlide> <img [src]="'../resources/images/gallery/gallery/'+galleryImgage"></ng-template>
+        </ng-container>
+    </owl-carousel-o>
+</div>

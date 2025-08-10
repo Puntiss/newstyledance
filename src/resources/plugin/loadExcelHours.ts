@@ -60,7 +60,6 @@ export class LoadExcelHours {
             })
 
         });
-        console.log(result)
         return result;
     }
 

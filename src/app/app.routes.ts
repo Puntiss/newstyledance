@@ -15,6 +15,8 @@ import { CentroFormazioneLocationComponent } from './centro-formazione/location/
 import { EventiDanzaChiSiamoComponent } from './eventi-danza/chisiamo/chisiamo.component';
 import { EventiDanzaProductionComponent } from './eventi-danza/production/production.component';
 import { EventiDanzaAudizioniComponent } from './eventi-danza/audizioni/audizioni.component';
+import { ScuolaDanzaConcorsiComponent } from './scuola-danza/concorsi/concorsi.component';
+import { GalleryComponent } from './gallery/gallery.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'pre-menu', pathMatch: 'full' },
@@ -24,6 +26,7 @@ export const routes: Routes = [
     { path: 'scuola-danza-dove-siamo', component: ScuolaDanzaLocationComponent },
     { path: 'scuola-danza-orari', component: ScuolaDanzaPlanningComponent },
     { path: 'scuola-danza-docenti', component: ScuolaDanzaInsegnantiComponent },
+    { path: 'scuola-danza-concorsi', component: ScuolaDanzaConcorsiComponent },
     /*accademia danza*/
     { path: 'accademia-danza-chi-siamo', component: AccademiaDanzaChiSiamoComponent },
     { path: 'accademia-danza-dove-siamo', component: AccademiaDanzaLocationComponent },
@@ -37,6 +40,8 @@ export const routes: Routes = [
     { path: 'eventi-danza-chi-siamo', component: EventiDanzaChiSiamoComponent },
     { path: 'eventi-danza-audizioni', component: EventiDanzaAudizioniComponent },
     { path: 'eventi-danza-produzioni', component: EventiDanzaProductionComponent },
+     /*gallery*/
+    { path: 'gallery', component: GalleryComponent },
     /*altro*/
     { path: '**', component: ErrorComponent }
 ];

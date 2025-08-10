@@ -12,8 +12,8 @@ export class LoadExcelGallery {
 
         let result: string[] = [];
 
-        workbook.SheetNames.forEach(sheetDayName => {
-            const worksheet = workbook.Sheets[sheetDayName];
+        workbook.SheetNames.forEach(sheetName => {
+            const worksheet = workbook.Sheets[sheetName];
 
             const data: any[][] = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
             data.shift();
