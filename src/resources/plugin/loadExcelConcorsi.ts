@@ -10,53 +10,40 @@ export class LoadExcelConcorsi {
         const arrayBuffer = await response.arrayBuffer();
         const workbook = XLSX.read(arrayBuffer);
 
-        let result: YearConcorsiyRowType[] = [];
+        let result: ConcorsiyRowType[] = [];
 
         workbook.SheetNames.forEach(sheetName => {
             const worksheet = workbook.Sheets[sheetName];
 
-            let listaConcorsi: ConcorsiRowType[] = [];
+            let listaConcorsi: string[] = [];
             let immaginiSuccessive: string[] = []
 
             const data: any[][] = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
             data.shift();
-            let previusYear = '/0';
+            let previusType = E_CONCORSI_TYPE.CONCORSO;
             data.forEach((row) => {
-
-                let tipo = row[1];
-
+                let tipo = row[0];
                 if (tipo == E_CONCORSI_TYPE.CONCORSO) {
-                    let anno = row[0];
-                    console.log(anno)
-                    if (previusYear == "/0")
-                        previusYear = anno
-
-                    if (previusYear == anno) {
-                        console.log("yes!")
-                        listaConcorsi.push({
-                            nome: row[2],
-                            posizione: row[3]
-                        })
-                    } else {
-                        console.log("else", previusYear, anno)
-                        result.push({ anno: previusYear, listaConcorsi, immaginiSuccessive: immaginiSuccessive })
-                        previusYear = anno;
+                    if (previusType == E_CONCORSI_TYPE.IMMAGINE) {
+                        result.push({ listaConcorsi, immaginiSuccessive });
                         listaConcorsi = [];
                         immaginiSuccessive = [];
-                        listaConcorsi.push({
-                            nome: row[2],
-                            posizione: row[3]
-                        })
                     }
-                } 
-                
-                if (tipo == E_CONCORSI_TYPE.IMMAGINE) {
-
-                    immaginiSuccessive.push(row[2])
+                    listaConcorsi.push(row[1]);
+                    previusType = E_CONCORSI_TYPE.CONCORSO;
                 }
+
+                if (tipo == E_CONCORSI_TYPE.IMMAGINE) {
+                    immaginiSuccessive.push(row[1]);
+                    previusType = E_CONCORSI_TYPE.IMMAGINE;
+                }
+
+                if(!tipo){
+                    return;
+                }
+
             });
-            result.push({ anno: previusYear, listaConcorsi, immaginiSuccessive: immaginiSuccessive });
-           
+            result.push({ listaConcorsi, immaginiSuccessive });
         });
 
         console.log(result)
@@ -64,15 +51,9 @@ export class LoadExcelConcorsi {
     }
 }
 
-export interface YearConcorsiyRowType {
-    anno: string;
-    listaConcorsi: ConcorsiRowType[];
+export interface ConcorsiyRowType {
+    listaConcorsi: string[];
     immaginiSuccessive: string[];
-}
-
-export interface ConcorsiRowType {
-    nome: string;
-    posizione: string;
 }
 
 export enum E_CONCORSI_TYPE {

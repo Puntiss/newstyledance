@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, ViewEncapsulation } from '@angular/core';
-import { E_CONCORSI_TYPE, LoadExcelConcorsi, YearConcorsiyRowType } from '../../../resources/plugin/loadExcelConcorsi';
+import { ConcorsiyRowType, E_CONCORSI_TYPE, LoadExcelConcorsi } from '../../../resources/plugin/loadExcelConcorsi';
 import { ContactBarComponent } from '../../contact-bar/contact-bar.component';
 import { ScuolaDanzaNavbarComponent } from '../navbar/navbar.component';
 import { customOptions } from '../../../resources/plugin/owl-carousel.config';
@@ -23,7 +23,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 export class ScuolaDanzaConcorsiComponent {
 
   E_CONCORSI_TYPE = E_CONCORSI_TYPE;
-  dataSource: Array<YearConcorsiyRowType> = [];
+  dataSource: Array<ConcorsiyRowType> = [];
   customOptions = customOptions;
 
   constructor(private loadExcelConcorsi: LoadExcelConcorsi) { }
