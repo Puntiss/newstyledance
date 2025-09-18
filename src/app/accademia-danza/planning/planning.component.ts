@@ -1,10 +1,9 @@
 import { Component, DoCheck, ViewEncapsulation } from '@angular/core';
 import { ContactBarComponent } from '../../contact-bar/contact-bar.component';
 import { CommonModule } from '@angular/common';
-import { AccademiaDanzaNavbarComponent } from '../navbar/navbar.component'; 
+import { AccademiaDanzaNavbarComponent } from '../navbar/navbar.component';
 import { ActivatedRoute, } from '@angular/router';
-import { LoadExcelHours, LocationType, WeeklyLocationRowType } from '../../../resources/plugin/loadExcelHours';
-import { locations } from '../../accademia-danza/navbar/navbar.component';
+import { Lesson, LoadExcelHours, LocationType, Schedule, WeeklyLocationRowType } from '../../../resources/plugin/loadExcelHours';
 import { faSortDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
@@ -41,18 +40,30 @@ export class AccademiaDanzaPlanningComponent implements DoCheck {
   ngOnInit(): void {
     this.loadExcelHours.getLocations("accademia-danza").then(locations =>
       locations.forEach((location: LocationType) => {
-      this.loadExcelHours.loadfromHours("accademia-danza", location.nome).then(
-        (weeklyPrograms) => {
-          this.dataTable.push({ locationName: location.nome, weeklyPrograms: weeklyPrograms })
-          console.log(this.dataTable);
-        }
-      )
-    }));
+        this.loadExcelHours.loadfromHours("accademia-danza", location.nome).then(
+          (weeklyPrograms) => {
+            this.dataTable.push({ locationName: location.nome, weeklyPrograms: weeklyPrograms })
+            console.log(this.dataTable);
+          }
+        )
+      }));
   }
 
   filterByLocation(): WeeklyLocationRowType[] {
     let result: WeeklyLocationRowType[] = []
     this.dataTable.forEach((dt) => { if (dt.locationName == this.location) result = dt.weeklyPrograms });
     return result;
+  }
+
+  getLesson(time: string, col: number, schedule: Schedule): Lesson | undefined {
+    return schedule.lessons.find(l => l.time === time && l.col === col);
+  }
+
+  isCovered(time: string, col: number, schedule: Schedule): boolean {
+    const index = schedule.times.indexOf(time);
+    return schedule.lessons.some(l => {
+      const start = schedule.times.indexOf(l.time);
+      return l.col === col && index > start && index < start + l.span;
+    });
   }
 }

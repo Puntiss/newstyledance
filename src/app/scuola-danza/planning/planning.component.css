@@ -4,10 +4,21 @@
     background: none;
     border: none;
 }
+
 .table td,
 .table th {
     font-size: 11px;
     padding: 0.25rem;
     min-width: 50px;
     text-align: start;
+    border: 1px solid white;
+}
+
+.table td {
+    height: 43px;
+}
+
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: none !important;
 }
