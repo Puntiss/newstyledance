@@ -16,60 +16,26 @@ export class LoadExcelHours {
             const worksheet = workbook.Sheets[sheetDayName];
 
             const data: any[][] = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
-            const roomNames = data[0];
 
-            let rooms: string[] = roomNames.splice(1, roomNames.length)
+            let rooms: string[] = data[0];
+            let lessons: string[] = [];
 
             data.shift();
-
-            const lessons: Lesson[] = [];
-            const times: string[] = [];
-            
-
             data.forEach(row => {
-
-                const time = this.excelFractionToTime(row[0]);
-                times.push(time);
-
-                row.splice(0, 1);
-
-                let col = 1;
-                for (let i = 0; i < rooms.length; i++) {
-
-                    let lesson = row[i];
-
-                    if (lesson) {
-                        if (lesson != '-') {
-                            lessons.push({
-                                time: time,
-                                col: col,
-                                name: lesson,
-                                span: 1
-                            });
-                        }
-                    } else {
-                        const index = this.getPreviousLessonInCol(lessons, col);
-                        if (index != -1)
-                            lessons[index].span++
-                    }
-                    col++;
-                }
-
+                row.forEach(cell => lessons.push(cell));
             });
 
             result.push({
                 dayName: sheetDayName,
                 programs: {
                     rooms: rooms,
-                    times: times,
                     lessons: lessons
                 }
             })
 
-            return
-
         });
         return result;
+
     }
 
     async getLocations(schoolType: string) {
@@ -96,27 +62,6 @@ export class LoadExcelHours {
         });
         return result;
     }
-
-    excelFractionToTime(f: number): string {
-        // Excel memorizza le ore come frazione del giorno
-        const totalMinutes = Math.round(f * 24 * 60);
-        const h = Math.floor(totalMinutes / 60);
-        const m = totalMinutes % 60;
-        return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
-    }
-
-    getPreviousLessonInCol(lessons: Lesson[], col: number) {
-        let result = -1;
-        let i = 0;
-        for (let lesson of lessons) {
-            if (lesson.col == col)
-                result = i;
-
-            i++;
-        }
-
-        return result;
-    }
 }
 
 export interface WeeklyLocationRowType {
@@ -140,16 +85,8 @@ export interface LocationType {
     linkMaps: string
 }
 
-export interface Lesson {
-    time: string;
-    col: number;   // colonna (1, 2, 3)
-    name: string;
-    span: number;  // rowspan
-}
-
 export interface Schedule {
     rooms: string[];
-    times: string[];
-    lessons: Lesson[];
+    lessons: string[];
 }
 

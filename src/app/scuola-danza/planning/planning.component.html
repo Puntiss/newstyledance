@@ -19,24 +19,21 @@
                         <div class="collapse multi-collapse" [id]="'multiCollapseExample'+ i">
                             <div class="card card-body planning-element" style="padding: 0px;">
                                 <table class="table planning-element">
-                                    <thead>
+                                     <thead>
                                         <tr>
-                                            <th scope="col">Orari</th>
                                             <ng-container *ngFor="let room of hourTable.programs.rooms">
                                                 <th scope="col">{{room}}</th>
                                             </ng-container>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr *ngFor="let time of hourTable.programs.times">
-                                            <td>{{ time }}</td>
-
-                                            <ng-container *ngFor="let col of [1,2,3]">
-                                                <td *ngIf="!isCovered(time, col, hourTable.programs)"
-                                                    [attr.rowspan]="getLesson(time, col, hourTable.programs)?.span || null">
-                                                    {{ getLesson(time, col, hourTable.programs)?.name || '-' }}
-                                                </td>
-                                            </ng-container>
+                                        <tr *ngFor="let row of hourTable.programs.lessons; let rowIndex = index"
+                                            [hidden]="rowIndex % hourTable.programs.rooms.length !== 0">
+                                            <td [style.width]="100 / hourTable.programs.rooms.length + 'vw'" 
+                                            style="text-align: center; vertical-align: middle; white-space: break-spaces; height: 80px;"
+                                                *ngFor="let col of hourTable.programs.lessons.slice(rowIndex, rowIndex + hourTable.programs.rooms.length)">
+                                                {{ col }}
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
